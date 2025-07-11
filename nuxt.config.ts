@@ -7,5 +7,6 @@ export default defineNuxtConfig({
     server: {
       allowedHosts: ['afkhub.ru']
     }
-  }
+  },
+  css: ['~/app/assets/css/main.css']
 })
