@@ -1,2 +1,15 @@
 @import "tailwindcss";
-@import "@nuxt/ui";
+
+html {
+    background: #2c2c30;
+}
+
+@theme {
+    --color-primary: #aa74cf;
+}
+
+h2 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
