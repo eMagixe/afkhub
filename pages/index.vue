@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { onMounted, useFetch } from '#imports'
-import { NDivider, NImage, NList, NListItem, NSpace, NSpin, NTag, useLoadingBar } from 'naive-ui'
+import { onMounted, useLoadingIndicator } from '#imports'
 
-const loadingBar = useLoadingBar()
 const loading = ref(null)
+
+const loadingBar = useLoadingIndicator()
 
 const items = ref(5)
 
 const fetchItems = async () => {
 	loadingBar.start()
 
-	useFetch('/api/articles').then(({ data }) => {
-		loadingBar.finish()
+	await $fetch('/api/articles').then(({ data }) => {
+		setTimeout(() => {
+			loadingBar.finish()
+		}, 500)
 		items.value += 5
 	})
 }
@@ -33,18 +35,17 @@ onMounted(() => {
 </script>
 
 <template>
-	<n-list hoverable clickable>
-		<n-list-item v-for="n in items" :key="n">
-			<div class="flex justify-start items-center gap-8">
-				<n-image width="320" src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
-				<div>
+	<div>
+		<div v-for="n in items" :key="n">
+			<div class="flex justify-start items-center border-b-1 border-b-[#3b3b40]">
+				<img width="320" src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" alt="cover" />
+				<div class="w-full h-full pl-8">
 					<h2 class="text-primary">Title article</h2>
-					<n-space size="small" class="mb-4">
-						<n-tag :bordered="false" size="small"> Tag C</n-tag>
-						<n-tag :bordered="false" size="small"> Tag D</n-tag>
-					</n-space>
-					<n-divider />
-					<p class="mb-4">
+					<div size="small" class="mb-4 text-white">
+						<span size="small"> Tag C</span>
+						<span size="small"> Tag D</span>
+					</div>
+					<p class="mb-4 text-white">
 						Lorem ipsum dolor sit amet,<br />
 						consectetur adipiscing elit,<br />
 						sed do eiusmod tempor incididunt<br />
@@ -54,11 +55,15 @@ onMounted(() => {
 					</p>
 				</div>
 			</div>
-		</n-list-item>
-		<div class="flex justify-center items-center p-4" ref="loading">
-			<n-spin size="medium" />
 		</div>
-	</n-list>
+		<div class="flex justify-center items-center p-4" ref="loading">
+			<img width="50" src="/spinner.svg" alt="loading" />
+		</div>
+	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.test {
+	color: #3b3b40;
+}
+</style>
