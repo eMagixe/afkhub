@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useArticle } from '~/composibles/useArticle'
-import Spinner from '#shared/ui/spinner.vue'
+import Spinner from '~/components/chared/spinner.vue'
 import type { Article } from '#shared/types'
 import { useTemplateRef } from 'vue'
 import { useElementVisibility } from '@vueuse/core'
