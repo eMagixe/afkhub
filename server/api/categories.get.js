@@ -1,15 +1,7 @@
 export default defineEventHandler(async (event) => {
 	const config = useRuntimeConfig()
 	const query = getQuery(event)
-	const response = await fetch(
-		config.public.API +
-			'/items/articles?limit=' +
-			query.limit +
-			'&offset=' +
-			query.offset +
-			'&fields=*,categories.*',
-		{ method: 'get' }
-	)
+	const response = await fetch(config.public.API + '/items/categories', { method: 'get' })
 
 	if (response.ok) {
 		return response.json().then((res) => res.data)
