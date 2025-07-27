@@ -17,12 +17,11 @@ const api = useRuntimeConfig().public.API
 
 <template>
 	<div
-		class="w-full flex flex-col sm:flex-row hover:bg-neutral-700 cursor-pointer justify-start items-center border-b-1 border-r-1 border-[#3b3b40]"
+		class="w-full flex flex-col sm:flex-row hover:bg-neutral-700 cursor-pointer justify-start items-start border-b-1 border-r-1 border-[#3b3b40]"
 	>
-		<div
-			class="w-full min-h-[450px] h-full article-cover"
-			:style="`background-image: url(${api}/assets/${item.cover});`"
-		></div>
+		<picture class="w-full h-full max-h-[600px]">
+			<img class="article-cover" :src="`${api}/assets/${item.cover}`" alt="cover" />
+		</picture>
 		<div class="w-full h-full p-8">
 			<h2 class="text-primary">{{ item.name }}</h2>
 			<div size="small" class="mb-4 text-white inline-flex gap-1">
@@ -37,7 +36,9 @@ const api = useRuntimeConfig().public.API
 
 <style scoped>
 .article-cover {
-	background-size: cover;
-	background-position: center;
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
+	height: 100%;
 }
 </style>
