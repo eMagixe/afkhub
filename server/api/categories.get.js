@@ -3,13 +3,15 @@ export default defineEventHandler(async (event) => {
 	const query = getQuery(event)
 	const response = await fetch(config.public.API + '/items/categories', { method: 'get' })
 
-	if (response.ok) {
-		return response.json().then((res) => res.data)
-	} else {
-		const error = await response.json()
-		throw createError({
-			statusCode: response.status,
-			statusMessage: error.message || 'Failed to fetch posts'
-		})
-	}
+	// if (response.ok) {
+	// 	return response.json().then((res) => res.data)
+	// 	return []
+	// } else {
+	// 	const error = await response.json()
+	// 	throw createError({
+	// 		statusCode: response.status,
+	// 		statusMessage: error.message || 'Failed to fetch posts'
+	// 	})
+	// }
+	return []
 })

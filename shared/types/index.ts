@@ -7,18 +7,15 @@ export type MenuOption = {
 }
 
 export type Article = {
-	uuid: string
-	status: string
-	sort: string | null
-	user_create: string
-	date_created: string
-	user_updated: string | null
-	date_updated: string | null
-	name: string
-	slug: string
-	cover: string | null
-	short_content: string
-	content: string
+	title: {
+		rendered: string
+	}
+	content: {
+		rendered: string
+	}
+	media: {
+		source_url: string
+	}
 	categories: Category[]
 }
 

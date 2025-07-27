@@ -17,7 +17,7 @@ watch(targetIsVisible, (isVisible) => {
 })
 
 const loaderVisible = computed(() => {
-	return !loadingBar.isLoading.value
+	return !loadingBar.isLoading.value && loadingBar.progress.value > 0
 })
 </script>
 
