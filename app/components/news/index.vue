@@ -8,16 +8,16 @@ import { useElementVisibility } from '@vueuse/core'
 const loader = useTemplateRef<HTMLDivElement>('loader')
 const targetIsVisible = useElementVisibility(loader)
 
-const { fetchItems, items: news, loadingBar } = useArticle()
+const { fetchAll, items: news, loadingBar } = useArticle()
 
 watch(targetIsVisible, (isVisible) => {
 	if (isVisible) {
-		fetchItems()
+		fetchAll()
 	}
 })
 
 const loaderVisible = computed(() => {
-	return !loadingBar.isLoading.value && loadingBar.progress.value > 0
+	return loadingBar.progress.value > 0
 })
 </script>
 

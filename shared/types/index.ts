@@ -1,5 +1,7 @@
 export type MenuOption = {
 	label: string
+	id: number
+	slug: string
 	action?: () => {}
 	to?: string
 	icon?: string | any
@@ -7,6 +9,7 @@ export type MenuOption = {
 }
 
 export type Article = {
+	slug: string
 	title: {
 		rendered: string
 	}
@@ -20,8 +23,7 @@ export type Article = {
 }
 
 export type Category = {
-	uuid: string
-	categories_uuid?: string | null
+	id: number
 	name: string
 	description: string
 	slug: string
