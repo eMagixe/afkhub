@@ -24,7 +24,7 @@ const loaderVisible = computed(() => {
 	<div v-if="loaderVisible" class="flex justify-center items-center p-4" ref="loader">
 		<spinner />
 	</div>
-	<PostsItem v-else v-model="current as Article" />
+	<PostsItem v-else-if="current" v-model="current" />
 </template>
 
 <style scoped></style>
